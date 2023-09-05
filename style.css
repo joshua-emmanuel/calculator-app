@@ -72,3 +72,143 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+:root {
+  --very-dark-saturated-blue-main: hsl(233, 47%, 7%);
+  --very-dark-saturated-blue-keypad: hsl(233, 31%, 20%);
+  --very-dark-saturated-blue-screen: hsl(224, 36%, 15%);
+
+  --desaturated-dark-blue-bg: hsl(225, 21%, 49%);
+  --desaturated-dark-blue-shadow: hsl(224, 28%, 35%);
+
+  --red: hsl(6, 63%, 50%);
+  --dark-red: hsl(6, 70%, 34%);
+
+  --light-grayish-orange: hsl(30, 25%, 89%);
+  --grayish-orange: hsl(28, 16%, 65%);
+
+  --very-dark-grayish-blue: hsl(221, 14%, 31%);
+  --white: hsl(0, 0%, 100%);
+
+  --clr-main-bg: var(--very-dark-saturated-blue-main);
+  --clr-keypad-bg: var(--very-dark-saturated-blue-keypad);
+  --clr-screen-bg: var(--very-dark-saturated-blue-screen);
+
+  --clr-key-bg: var(--light-grayish-orange);
+  --clr-key-shadow: var(--grayish-orange);
+
+  --clr-key-bg-accent1: var(--desaturated-dark-blue-bg);
+  --clr-key-shadow-accent1: var(--desaturated-dark-blue-shadow);
+
+  --clr-key-bg-accent2: var(--red);
+  --clr-key-shadow-accent2: var(--dark-red);
+
+  --clr-text-white: var(--white);
+  --clr-text-blue: var(--very-dark-grayish-blue);
+
+  --border-radius: .5rem;
+}
+
+body {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background-color: var(--clr-screen-bg);
+  color: var(--clr-text-white);
+}
+
+main {
+  display: grid;
+  min-height: 100svh;
+  min-height: 100vh;
+  place-items: center;
+}
+
+.wrapper {
+  max-width: 100%;
+  width: min(400px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.calculator > * + * {
+  margin-top: 1.5rem;
+}
+
+.calculator__header {
+  font-size: 1rem;
+}
+
+.calculator__display {
+  padding: 1rem 2rem;
+  text-align: right;
+  font-size: 3rem;
+  border-radius: var(--border-radius);
+  background-color: var(--clr-main-bg);
+}
+
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--clr-keypad-bg);
+}
+
+.calculator__keys > [data-button-type='reset'],
+.calculator__keys > [data-button-type='equal'] {
+  grid-column: span 2;
+}
+
+.calculator__keys > button { 
+  cursor: pointer;
+  border: 0;
+  padding: .25rem;
+  outline: none;
+  border-radius: var(--border-radius);
+  box-shadow: 1px 2px var(--clr-key-shadow);
+  color: var(--clr-text-blue);
+  background-color: var(--clr-key-bg);
+}
+
+.calculator__keys > button:active {
+  transform: scale(.98);
+  box-shadow: 0 1px var(--clr-key-shadow);
+}
+
+.calculator__keys > button:not([data-button-type='reset']):not([data-button-type='delete']):not([data-button-type='equal']):hover,
+.calculator__keys > button:not([data-button-type='reset']):not([data-button-type='delete']):not([data-button-type='equal']):focus,
+.calculator__keys > button:not([data-button-type='reset']):not([data-button-type='delete']):not([data-button-type='equal']):active {
+  background-color: var(--white);
+}
+
+.calculator__keys > button[data-button-type='reset']:hover,
+.calculator__keys > button[data-button-type='delete']:hover,
+.calculator__keys > button[data-button-type='equal']:hover {
+  opacity: .85;
+}
+
+.calculator__keys > button[data-button-type='reset']:focus,
+.calculator__keys > button[data-button-type='delete']:focus,
+.calculator__keys > button[data-button-type='equal']:focus {
+  opacity: .85;
+}
+
+.calculator__keys > button[data-button-type='reset']:active,
+.calculator__keys > button[data-button-type='delete']:active,
+.calculator__keys > button[data-button-type='equal']:active {
+  opacity: .85;
+}
+
+.calculator__keys > [data-button-type='reset'],
+.calculator__keys > [data-button-type='delete'] {
+  --clr-key-shadow: var(--clr-key-shadow-accent1);
+  --clr-key-bg: var(--clr-key-bg-accent1);
+  color: var(--clr-text-white);
+}
+
+.calculator__keys > [data-button-type='equal'] {
+  --clr-key-shadow: var(--clr-key-shadow-accent2);
+  --clr-key-bg: var(--clr-key-bg-accent2);
+  color: var(--clr-text-white);
+}
