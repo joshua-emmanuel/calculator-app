@@ -126,12 +126,12 @@ main {
 
 .wrapper {
   max-width: 100%;
-  width: min(400px, 100% - 2rem);
+  width: min(375px, 100% - 5rem);
   margin-inline: auto;
 }
 
 .calculator > * + * {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .calculator__header {
