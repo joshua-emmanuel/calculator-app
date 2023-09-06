@@ -126,7 +126,7 @@ main {
 
 .wrapper {
   max-width: 100%;
-  width: min(375px, 100% - 5rem);
+  width: min(400px, 100% - 4rem);
   margin-inline: auto;
 }
 
