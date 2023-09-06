@@ -176,6 +176,11 @@ calculatorKeys.addEventListener('click', function (event) {
       break;
   }
 
+  if (calculatorDisplay.scrollWidth > calculatorDisplay.clientWidth) {
+    // Reduce the font size to fit
+    calculatorDisplay.style.fontSize = (parseFloat(getComputedStyle(calculatorDisplay).fontSize) - 2) + 'px';
+  }
+
   calculator.dataset.previousButtonType = buttonType;
 });
 
