@@ -56,6 +56,13 @@ function handleNumberKeys(calculator, button) {
     delete calculator.dataset.secondValue;
     delete calculator.dataset.modifierValue;
   }
+
+  if (previousButtonType === 'delete') {
+    delete calculator.dataset.firstValue;
+    delete calculator.dataset.operator;
+    delete calculator.dataset.secondValue;
+    delete calculator.dataset.modifierValue;
+  }
 }
 
 function handleDecimalKey(calculator) {
@@ -69,6 +76,13 @@ function handleDecimalKey(calculator) {
   if (previousButtonType === 'equal') {
     calculatorDisplay.textContent = '0.';
 
+    delete calculator.dataset.firstValue;
+    delete calculator.dataset.operator;
+    delete calculator.dataset.secondValue;
+    delete calculator.dataset.modifierValue;
+  }
+
+  if (previousButtonType === 'delete') {
     delete calculator.dataset.firstValue;
     delete calculator.dataset.operator;
     delete calculator.dataset.secondValue;
@@ -339,6 +353,18 @@ const tests = [
     message: 'Operator Follow-Up Calculation',
     keys: ['1', 'plus', '3', 'plus', '5', 'plus', '7', 'plus'],
     result: '16'
+  },
+
+  {
+    message: 'No follow-up Calculation after pressing equal',
+    keys: ['6', 'plus', '9', 'equal', '5', 'plus', '5', 'equal'],
+    result: '10',
+  },
+
+  {
+    message: 'No follow-up Calculation after pressing delete',
+    keys: ['6', 'plus', '9', 'equal', 'delete', '3', 'minus', '9', 'equal'],
+    result: '4',
   }
 ];
 
