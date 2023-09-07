@@ -131,7 +131,7 @@ main {
 }
 
 .calculator {
-  width: 290px;
+  width: 320px;
   margin-inline: auto;
 }
 @media (min-width: 50em) {
