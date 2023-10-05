@@ -134,7 +134,7 @@ function handleEqualKey(calculator) {
 
   if (firstValue && operator) {
     const result = calculate(firstValue, operator, secondValue);
-    calculatorDisplay.textContent = result;
+    calculatorDisplay.textContent = Math.round(result * 10000) / 10000;
     // Assigns new result to first value
     calculator.dataset.firstValue = result;
     // Stores second values as modifier for follow up calculations
